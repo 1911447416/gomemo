@@ -1,0 +1,98 @@
+package models
+
+import (
+	"fmt"
+	"strconv"
+
+	"gopkg.in/ini.v1"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
+)
+
+var DB *gorm.DB
+var err error
+
+type Memo struct {
+	Id     int
+	Title  string
+	Status int
+}
+
+func (Memo) TableName() string {
+	return "memos"
+}
+
+func init() {
+	// 读取配置文件
+	cfg, err := ini.Load("./conf/app.ini")
+	if err != nil {
+		fmt.Println("fail to load conf.err:", err)
+	}
+	ip := cfg.Section("mysql").Key("ip").String()
+	port := cfg.Section("mysql").Key("port").String()
+	user := cfg.Section("mysql").Key("user").String()
+	password := cfg.Section("mysql").Key("password").String()
+	database := cfg.Section("mysql").Key("database").String()
+
+	// 连接数据库 dsn="root:123456@tcp(localhost:3306)/gin?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := fmt.Sprintf("%v:%v@tcp(%v:%v)/%v?charset=utf8mb4&parseTime=True&loc=Local", user, password, ip, port, database)
+	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	if err != nil {
+		fmt.Println("open db err!err:", err)
+	}
+}
+
+// 获取首页memo
+func GetAllMemo() []Memo {
+	memolist := []Memo{}
+	DB.Find(&memolist)
+	return memolist
+}
+
+// 创建memo
+func CreateMemo(content string) bool {
+	newmemo := &Memo{
+		Title: content,
+	}
+	result := DB.Create(&newmemo)
+	fmt.Println(result.RowsAffected)
+	if result.RowsAffected > 0 {
+		return true
+	}
+	return false
+}
+
+func DeleteMemo(id string) bool {
+	num, err := strconv.Atoi(id)
+	if err != nil {
+		fmt.Println("string to int err! err:", err)
+	}
+	dmemo := &Memo{
+		Id: num,
+	}
+	DB.Delete(&dmemo)
+	return true
+}
+
+func DoneMemo(id string) bool {
+	num, err := strconv.Atoi(id)
+	if err != nil {
+		fmt.Println("string to int err! err:", err)
+	}
+	dmemo := Memo{Id: num}
+	DB.Find(&dmemo)
+	dmemo.Status = 1
+	DB.Save(&dmemo)
+	return true
+}
+func NoDoneMemo(id string) bool {
+	num, err := strconv.Atoi(id)
+	if err != nil {
+		fmt.Println("string to int err! err:", err)
+	}
+	dmemo := Memo{Id: num}
+	DB.Find(&dmemo)
+	dmemo.Status = 0
+	DB.Save(&dmemo)
+	return true
+}

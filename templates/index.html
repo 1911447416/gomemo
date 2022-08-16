@@ -1,0 +1,159 @@
+{{define "templates/index.html"}}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Heroes · Bootstrap v5.1</title>
+
+    <!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/heroes/"> -->
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="./../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="./../static/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    
+<main>
+  <h1 class="visually-hidden">Heroes examples</h1>
+
+
+
+  <div class="b-example-divider"></div>
+
+
+
+  <div class="b-example-divider"></div>
+
+  <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    <div class="row align-items-center g-lg-5 py-5">
+      <div class="col-lg-7 text-center text-lg-start">
+        <div>
+          <div class="bd-example">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">备忘事项</th>
+              <th scope="col"></th>
+
+              <th scope="col">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+              {{range $key,$value := .Memolist}}
+            <tr>
+              <th scope="row" style="width: 8%;" >
+                <p class="IDID">
+                  
+                </p>
+              </th>
+
+              {{if eq $value.Status 1}}
+              <td  colspan="2"><del>{{$value.Title}}</del></td>
+              {{else}}
+              <td  colspan="2">{{$value.Title}}</td>
+              {{end}}
+              <td style="width: 30%;">
+
+                {{if eq $value.Status 1}}
+                <a  style="margin-left:5px;margin-right: 5px;" class="" href="/nodone?id={{$value.Id}}">未完成?</button>
+                {{else}}
+                <a  style="margin-left:5px;margin-right: 5px;" class="btn btn-primary btn-sm" href="/done?id={{$value.Id}}">完成</button>
+                {{end}}
+                <a  class="btn btn-primary btn-sm" href="/delete?id={{$value.Id}}">删除</button>
+              </td>
+            </tr>
+            {{end}}
+
+            </tbody>
+          </table>
+          </div>
+  
+
+        </div>
+      </div>
+      <div class="col-md-10 mx-auto col-lg-5">
+        
+        <form class="p-4 p-md-5 border rounded-3 bg-light" method="post" action="/dopost">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="content" name="content" placeholder="name@example.com">
+            <label for="floatingInput">请输入备忘事项...</label>
+          </div>  
+
+          <!-- <button class="w-100 btn btn-lg btn-primary" type="submit"></button>  -->
+          <input type="submit"class="w-100 btn btn-lg btn-primary"  value="提交">
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="b-example-divider"></div>
+
+
+  <div class="b-example-divider"></div>
+
+  <!-- <div class="bg-dark text-secondary px-4 py-5 text-center">
+    <div class="py-5">
+      <h1 class="display-5 fw-bold text-white">Dark mode hero</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="fs-5 mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <button type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Custom button</button>
+          <button type="button" class="btn btn-outline-light btn-lg px-4">Secondary</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="b-example-divider mb-0"></div>
+</main>
+
+
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+
+      
+  </body>
+</html>
+
+
+<script>
+  var arr = document.getElementsByClassName("IDID");
+
+  for (var i=1;i<=arr.length;i++){
+    console.log(i);
+
+    arr[i-1].innerHTML = i;
+  }
+
+
+</script>
+
+{{end}}
+
+

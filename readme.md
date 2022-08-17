@@ -63,7 +63,7 @@ database = gin
 
 ```
 #添加指定需要开放的端口：
-firewall-cmd --add-port=443/tcp --permanent
+firewall-cmd --add-port=8080/tcp --permanent
 #重载入添加的端口：
 firewall-cmd --reload
 ```

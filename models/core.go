@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"strconv"
 
-	"gopkg.in/ini.v1"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -23,23 +22,14 @@ func (Memo) TableName() string {
 }
 
 func init() {
-	// 读取配置文件
-	cfg, err := ini.Load("./conf/app.ini")
-	if err != nil {
-		fmt.Println("fail to load conf.err:", err)
-	}
-	ip := cfg.Section("mysql").Key("ip").String()
-	port := cfg.Section("mysql").Key("port").String()
-	user := cfg.Section("mysql").Key("user").String()
-	password := cfg.Section("mysql").Key("password").String()
-	database := cfg.Section("mysql").Key("database").String()
-
+	AppConfig := LoadConfig()
 	// 连接数据库 dsn="root:123456@tcp(localhost:3306)/gin?charset=utf8mb4&parseTime=True&loc=Local"
-	dsn := fmt.Sprintf("%v:%v@tcp(%v:%v)/%v?charset=utf8mb4&parseTime=True&loc=Local", user, password, ip, port, database)
+	dsn := fmt.Sprintf("%v:%v@tcp(%v:%v)/%v?charset=utf8mb4&parseTime=True&loc=Local", AppConfig.MysqlConfig.User, AppConfig.MysqlConfig.Password, AppConfig.MysqlConfig.Ip, AppConfig.MysqlConfig.Port, AppConfig.MysqlConfig.Database)
 	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		fmt.Println("open db err!err:", err)
 	}
+
 }
 
 // 获取首页memo
@@ -62,6 +52,7 @@ func CreateMemo(content string) bool {
 	return false
 }
 
+// 删除memo
 func DeleteMemo(id string) bool {
 	num, err := strconv.Atoi(id)
 	if err != nil {

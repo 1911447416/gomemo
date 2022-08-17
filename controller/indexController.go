@@ -2,7 +2,7 @@ package controller
 
 import (
 	"fmt"
-	"godemo/models"
+	"gomemo/models"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -37,14 +37,12 @@ func (con IndexController) DoDelete(c *gin.Context) {
 }
 
 func (con IndexController) DoDone(c *gin.Context) {
-
 	if ok := models.DoneMemo(c.Query("id")); !ok {
 		fmt.Println("修改失败")
 	}
 }
 
 func (con IndexController) NoDone(c *gin.Context) {
-
 	if ok := models.NoDoneMemo(c.Query("id")); !ok {
 		fmt.Println("修改失败")
 	}

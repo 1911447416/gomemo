@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"godemo/controller"
+	"gomemo/controller"
 
 	"github.com/gin-gonic/gin"
 )

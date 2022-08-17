@@ -1,17 +1,17 @@
 package main
 
 import (
-	"godemo/routers"
-
-	"github.com/gin-gonic/gin"
+	"fmt"
+	"gomemo/models"
+	"gomemo/routers"
 )
 
 func main() {
+	// 读取配置
+	AppConfig := models.LoadConfig()
+	fmt.Println(AppConfig)
 
-	r := gin.Default()
-	r.Static("/static", "./static")
-	r.LoadHTMLGlob("templates/*")
-	routers.IndexRoutersInit(r)
-	r.Run(":8080")
+	// 注册路由
+	routers.SetupRouters(AppConfig)
 
 }

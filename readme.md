@@ -1,16 +1,16 @@
 
 
-# gomemo·备忘录
+## gomemo·备忘录
 
 基于gin+gorm开发的小练习，前端代码是bootstrap拿过来的
 
-## 1.下载github源代码
+### 1.下载github源代码
 
 ```
 git clone https://github.com/1911447416/gomemo
 ```
 
-## 2.配置MySQL,创建所需要的数据库和表
+### 2.配置MySQL,创建所需要的数据库和表
 
 #### 登录数据库
 
@@ -35,7 +35,9 @@ COMMIT;
 SET FOREIGN_KEY_CHECKS = 1;
 ```
 
-## 3.在`/gomemo/`目录下创建文件夹及配置文件
+### 3.在main所在目录下创建文件夹及配置文件
+
+`cd gomemo`
 
 ```
 mkdir conf
@@ -44,7 +46,7 @@ touch app.ini
 vim app.ini
 ```
 
-## 4.编辑配置文件，按下i键，将mysql的信息填入，然后:wq保存退出
+### 4.编辑配置文件，按下i键，将mysql的信息填入，然后:wq保存退出
 
 ```vim app.ini
 port = 8080
@@ -57,7 +59,7 @@ password = passwd
 database = gin
 ```
 
-## 5.防火墙放行8080端口
+### 5.防火墙放行8080端口
 
 ```
 #添加指定需要开放的端口：
@@ -66,15 +68,17 @@ firewall-cmd --add-port=443/tcp --permanent
 firewall-cmd --reload
 ```
 
-## 6.查询端口是否开启成功
+### 6.查询端口是否开启成功
 
-`firewall-cmd --query-port=123/tcp`
+`firewall-cmd --query-port=8080/tcp`
 
-## 7.授予权限后台运行
+### 7.授予权限后台运行
 
 ```
 chmod 777 ./main
 nohup ./main &
 ```
 
-## 8.浏览器运行`http://你的服务器公网网址:8080/`即可
+启动之后，浏览器打开`http://你的服务器公网网址:8080/`即可
+
+![WX20220817-151054](/Users/zhao/Desktop/WX20220817-151054.png)

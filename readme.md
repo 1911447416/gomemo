@@ -81,4 +81,4 @@ nohup ./main &
 
 启动之后，浏览器打开`http://你的服务器公网网址:8080/`即可
 
-![WX20220817-151054](/Users/zhao/Desktop/WX20220817-151054.png)
+![readmeimg]()

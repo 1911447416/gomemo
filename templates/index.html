@@ -5,19 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.88.1">
     <title>备忘录·gomemo</title>
     <link rel="icon" href="../static/img/favicon.png" sizes="16x16">
-
-    <!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/heroes/"> -->
-
-    
-
     <!-- Bootstrap core CSS -->
-<link href="./../static/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="./../static/css/bootstrap.min.css" rel="stylesheet">
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -33,14 +24,9 @@
         }
       }
     </style>
-
-    
-    <!-- Custom styles for this template -->
     <link href="./../static/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
-    
-
 
 <div class="container py-3">
   <header>
@@ -52,7 +38,6 @@
       </a>
 
       <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-        <!-- <a class="me-3 py-2 text-dark text-decoration-none" href="https://github.com/1911447416/gomemo">前往github</a> -->
         <a class="nav-link py-2 px-0 px-lg-2" href="https://github.com/1911447416/gomemo" target="_blank" rel="noopener" style="color: black;">
           <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="navbar-nav-svg " viewBox="0 0 512 499.36" role="img"><title>GitHub</title><path fill="currentColor" fill-rule="evenodd" d="M256 0C114.64 0 0 114.61 0 256c0 113.09 73.34 209 175.08 242.9 12.8 2.35 17.47-5.56 17.47-12.34 0-6.08-.22-22.18-.35-43.54-71.2 15.49-86.2-34.34-86.2-34.34-11.64-29.57-28.42-37.45-28.42-37.45-23.27-15.84 1.73-15.55 1.73-15.55 25.69 1.81 39.21 26.38 39.21 26.38 22.84 39.12 59.92 27.82 74.5 21.27 2.33-16.54 8.94-27.82 16.25-34.22-56.84-6.43-116.6-28.43-116.6-126.49 0-27.95 10-50.8 26.35-68.69-2.63-6.48-11.42-32.5 2.51-67.75 0 0 21.49-6.88 70.4 26.24a242.65 242.65 0 0 1 128.18 0c48.87-33.13 70.33-26.24 70.33-26.24 14 35.25 5.18 61.27 2.55 67.75 16.41 17.9 26.31 40.75 26.31 68.69 0 98.35-59.85 120-116.88 126.32 9.19 7.9 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.23 0 6.85 4.61 14.81 17.6 12.31C438.72 464.97 512 369.08 512 256.02 512 114.62 397.37 0 256 0z"></path></svg>
           <small class="d-lg-none ms-2">GitHub源代码</small>
@@ -60,14 +45,10 @@
       </nav>
     </div>
 
-    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-         </div>
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center"></div>
   </header>
 
   <main>
-
-
-    
     <div class="container col-xl-10 col-xxl-8 ">
       <div class="row align-items-center g-lg-5">
         <div class="col-lg-7 text-center text-lg-start">
@@ -78,8 +59,6 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col" colspan="2">备忘事项</th>
-                <!-- <th scope="col"></th> -->
-  
                 <th scope="col">操作</th>
               </tr>
               </thead>
@@ -88,7 +67,6 @@
               <tr>
                 <th scope="row" style="width: 8%;" >
                   <p class="IDID">
-                    
                   </p>
                 </th>
   
@@ -117,12 +95,9 @@
               </tbody>
             </table>
             </div>
-    
-  
           </div>
         </div>
         <div class="col-md-10 mx-auto col-lg-5">
-          
           <form class="p-4 p-md-5 border rounded-3 bg-light" method="post" action="/dopost">
             <div class="form-floating mb-3">
               <input type="text" class="form-control" id="content" name="content" placeholder="name@example.com" style="height:100px;">
@@ -135,31 +110,19 @@
         </div>
       </div>
     </div>
-
   </main>
-
-
 </div>
-
     <script src="../static/js/bootstrap.bundle.min.js"></script>
-
-      
   </body>
 </html>
 
-
 <script>
   var arr = document.getElementsByClassName("IDID");
-
   for (var i=1;i<=arr.length;i++){
     console.log(i);
 
     arr[i-1].innerHTML = i;
   }
-
-
 </script>
 
 {{end}}
-
-

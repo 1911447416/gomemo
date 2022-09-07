@@ -18,6 +18,7 @@ git clone https://github.com/1911447416/gomemo
 mysql -u root -p
 ```
 #### 创建数据库和表格
+### mysql8
 ```mysql
 CREATE DATABASE gin DEFAULT CHARSET=utf8mb4;
 USE gin;
@@ -28,6 +29,24 @@ CREATE TABLE `memos` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+BEGIN;
+INSERT INTO `memos` VALUES (1, 'test', 1);
+COMMIT;
+SET FOREIGN_KEY_CHECKS = 1;
+```
+
+### mysql 5.6
+```mysql
+CREATE DATABASE gin DEFAULT CHARSET=utf8;
+USE gin;
+CREATE TABLE `memos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL,
+  `status` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 BEGIN;
 INSERT INTO `memos` VALUES (1, 'test', 1);

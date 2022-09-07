@@ -18,7 +18,7 @@ git clone https://github.com/1911447416/gomemo
 mysql -u root -p
 ```
 #### 创建数据库和表格
-### mysql8
+##### mysql8
 ```mysql
 CREATE DATABASE gin DEFAULT CHARSET=utf8mb4;
 USE gin;
@@ -36,7 +36,7 @@ COMMIT;
 SET FOREIGN_KEY_CHECKS = 1;
 ```
 
-### mysql 5.6
+##### mysql 5.6
 ```mysql
 CREATE DATABASE gin DEFAULT CHARSET=utf8;
 USE gin;

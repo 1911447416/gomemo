@@ -13,12 +13,12 @@ A small exercise based on gin+gorm development, the front-end code is bootstrap 
 ### 1.Download github source code
 
 ```
-git clone https://github.com/1911447416/gomemo
+git clone https://github.com/Polarbear-icecream/gomemo
 ```
 
 ### 2.Configure MySQL, create the required database and tables
 
-- If you do not have mysql installed,  [install mysql](https://github.com/1911447416/gomemo/blob/master/mysql.md) first
+- If you do not have mysql installed,  [install mysql](https://github.com/Polarbear-icecream/gomemo/blob/master/mysql.md) first
 - Recommended to use **Navicat Premmium** for visual database management
 
 #### Login database

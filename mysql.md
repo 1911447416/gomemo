@@ -1,64 +1,64 @@
 
 
-# Centos7 安装MySQL详细步骤
+# Centos 7 Detailed Steps to Install MySQL
 
-## 1.1 MySQL安装
+## 1.1 MySQL Installation
 
-### 1.1.1 下载[wget](https://so.csdn.net/so/search?q=wget)命令
+### 1.1.1 Download the **wget** command
 
 ```
 yum -y install wget
 ```
 
-### 1.1.2 在线下载mysql安装包
+### 1.1.2 Download mysql installer online
 
 ```
 wget https://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm
 ```
 
-### 1.1.3 安装MySQL
+### 1.1.3 Installing MySQL
 
 ```
 rpm -ivh mysql57-community-release-el7-8.noarch.rpm
 ```
 
-### 1.1.4 安装mysql服务
+### 1.1.4 Install mysql service
 
-- 首先进入`cd /etc/yum.repos.d/`目录。
+- First go to the `cd /etc/yum.repos.d/` directory.
 
 ```
 cd /etc/yum.repos.d/
 ```
 
-- 安装MySQL服务（这个过程可能有点慢）
+- Install MySQL services (this process can be a bit slow)
 
 ```
 yum -y install mysql-server
 ```
 
-linux安装MySQL时报错：
+linux install MySQL with the following error.
 
 [![vqpWDg.md.png](https://s1.ax1x.com/2022/09/08/vqpWDg.md.png)](https://imgse.com/i/vqpWDg)
 
-原因：MySQL GPG [密钥](https://so.csdn.net/so/search?q=密钥&spm=1001.2101.3001.7020)已过期导致
+Cause: MySQL GPG key has expired.
 
-解决办法：执行一下命令，解决
+Solution: Execute the following command to solve the problem
 
-rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
+```rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022```
 
  
 
-### 1.1.5 启动MySQL
+### 1.1.5 Starting MySQL
 
 ```
 systemctl start mysqld
 ```
 
-## 1.2 修改MySQL临时密码
+## 1.2 Change the MySQL temporary password
 
-MySQL安装成功后会有一个临时密码，我们可以使用`grep`命令查看临时密码先登录进去MySQL，然后修改MySQL密码。
+MySQL will have a temporary password after successful installation, we can use the `grep` command to check the temporary password to log in to MySQL first, and then change the MySQL password.
 
-### 1.2.1 获取MySQL临时密码
+### 1.2.1 Obtaining a temporary MySQL password
 
 ```
 grep 'temporary password' /var/log/mysqld.log
@@ -68,53 +68,53 @@ grep 'temporary password' /var/log/mysqld.log
 
  
 
- 1.2.2 使用临时密码先登录
+ 1.2.2 Use temporary password to log in first
 
 ```
 mysql -uroot -p
 ```
 
-### 1.2.3 把MySQL的密码校验强度改为低风险
+### 1.2.3 Change MySQL password checksum strength to low risk
 
 ```
 set global validate_password_policy=LOW;
 ```
 
-### 1.2.4 修改MySQL的密码长度
+### 1.2.4 Change the password length of MySQL
 
 ```
 set global validate_password_length=5;
 ```
 
-### 1.2.5 修改MySQL密码
+### 1.2.5 Change MySQL Password
 
 ```
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'admin'; 
 ```
 
-## 1.3 允许远程访问
+## 1.3 Allow remote access
 
-### 1.3.1 首先要关闭Cenots的防火墙
+### 1.3.1 First, turn off Cenots' firewall
 
 ```
 sudo systemctl disable firewalld
 ```
 
-### 1.3.2 修改MySQL允许任何人连接
+### 1.3.2 Modify MySQL to allow anyone to connect
 
-1）首先登录MySQL
+1）First login to MySQL
 
 ```
 mysql -uroot -padmin
 ```
 
-2）切换到mysql数据
+2）Switching to mysql data
 
 ```
 use mysql;
 ```
 
-3）查看user表
+3）View user table
 
 ```
 select Host,User from user;
@@ -124,21 +124,21 @@ select Host,User from user;
 
  
 
- 发现`root`用户只允许`localhost`主机登录登录
+ Found that the `root` user only allows the `localhost` host to log in
 
-4）修改为允许任何地址访问
+4）Modify to allow access to any address
 
 ```
 update user set Host='%' where User='root';
 ```
 
-5）刷新权限
+5）Refresh Permissions
 
 ```
 flush privileges;
 ```
 
-### 1.3.3 使用Navicat连接工具测试
+### 1.3.3 Testing with Navicat Connection Tool
 
 [![vqpvVJ.md.png](https://s1.ax1x.com/2022/09/08/vqpvVJ.md.png)](https://imgse.com/i/vqpvVJ)
 

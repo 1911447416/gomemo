@@ -2,7 +2,7 @@
 
 ## gomemo
 
-#### [查看中文文档](https://github.com/1911447416/gomemo/blob/master/readme_ch.md)
+#### [查看中文文档](https://github.com/Polarbear-icecream/gomemo/blob/master/readme_ch.md)
 
 ------
 

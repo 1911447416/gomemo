@@ -10,10 +10,6 @@ A small exercise based on gin+gorm development, the front-end code is bootstrap 
 
 
 
-[TOC]
-
-
-
 ### 1.Download github source code
 
 ```

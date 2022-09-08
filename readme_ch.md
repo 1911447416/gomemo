@@ -1,36 +1,26 @@
 
 
-## gomemo
+## gomemo·备忘录
 
-#### [查看中文文档](https://github.com/1911447416/gomemo/blob/master/readme_ch.md)
+基于gin+gorm开发的小练习，前端代码是bootstrap拿过来的
 
-------
-
-A small exercise based on gin+gorm development, the front-end code is bootstrap take over
-
-
-
-[TOC]
-
-
-
-### 1.Download github source code
+### 1.下载github源代码
 
 ```
 git clone https://github.com/1911447416/gomemo
 ```
 
-### 2.Configure MySQL, create the required database and tables
+### 2.配置MySQL,创建所需要的数据库和表
 
-- If you do not have mysql installed,  [install mysql](https://github.com/1911447416/gomemo/blob/master/mysql.md) first
-- Recommended to use **Navicat Premmium** for visual database management
+- 如果您没有安装mysql，先[安装mysql](https://github.com/1911447416/gomemo/blob/master/mysql.md)
+- 推荐使用**Navicat Premmium**进行数据库可视化管理
 
-#### Login database
+#### 登录数据库
 
 ```mysql
 mysql -u root -p
 ```
-#### Create databases and tables
+#### 创建数据库和表格
 ##### mysql8
 ```mysql
 CREATE DATABASE gin DEFAULT CHARSET=utf8mb4;
@@ -67,9 +57,9 @@ COMMIT;
 SET FOREIGN_KEY_CHECKS = 1;
 ```
 
-### 3.Create a folder and configuration file in the main directory
+### 3.在main所在目录下创建文件夹及配置文件
 
-- For Mac OS, **ForkLift** is recommended for file management, and **iTerm** is recommended for writing command line
+- 若是Mac OS 系统，推荐使用**ForkLift**进行文件管理，推荐使用**iTerm**书写命令行
 
 `cd gomemo`
 
@@ -80,7 +70,7 @@ touch app.ini
 vim app.ini
 ```
 
-### 4.Edit the configuration file, press i, fill in the mysql information, and then :wq save to exit
+### 4.编辑配置文件，按下i键，将mysql的信息填入，然后:wq保存退出
 
 ```vim app.ini
 port = 8080
@@ -93,28 +83,28 @@ password = passwd
 database = gin
 ```
 
-### 5.Firewall release of port 8080
+### 5.防火墙放行8080端口
 
 ```
-#Add the ports that need to be opened：
+#添加指定需要开放的端口：
 firewall-cmd --add-port=8080/tcp --permanent
-#Reload the added port：
+#重载入添加的端口：
 firewall-cmd --reload
 ```
 
-### 6.Check whether the port is successfully opened
+### 6.查询端口是否开启成功
 
 `firewall-cmd --query-port=8080/tcp`
 
-### 7.Grant permission to run in the background
+### 7.授予权限后台运行
 
 ```
 chmod 777 ./main
 nohup ./main &
 ```
 
-After starting, just open `http://Your-server's-public-network-URL:8080/` in your browser
+启动之后，浏览器打开`http://你的服务器公网网址:8080/`即可
 
-If the firewall blocks it, run ``systemctl stop firewalld`` to turn off the firewall
+若防火墙拦截，可运行```systemctl stop firewalld```关闭防火墙
 
 [![vB4yOs.png](https://s1.ax1x.com/2022/08/17/vB4yOs.png)](https://imgtu.com/i/vB4yOs)

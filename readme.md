@@ -12,6 +12,8 @@ git clone https://github.com/1911447416/gomemo
 
 ### 2.配置MySQL,创建所需要的数据库和表
 
+- 如果您没有安装mysql，先[安装mysql](https://github.com/1911447416/gomemo/blob/master/mysql.md)
+
 #### 登录数据库
 
 ```mysql

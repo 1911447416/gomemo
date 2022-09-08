@@ -2,7 +2,7 @@
 
 ## gomemo
 
-#### [查看中文文档](https://github.com/qyugo/gomemo/blob/master/readme_ch.md)
+#### [查看中文文档](https://github.com/chyugo/gomemo/blob/master/readme_ch.md)
 
 ------
 
@@ -13,12 +13,12 @@ A small exercise based on gin+gorm development, the front-end code is bootstrap 
 ### 1.Download github source code
 
 ```
-git clone https://github.com/qyugo/gomemo
+git clone https://github.com/chyugo/gomemo
 ```
 
 ### 2.Configure MySQL, create the required database and tables
 
-- If you do not have mysql installed,  [install mysql](https://github.com/qyugo/gomemo/blob/master/mysql.md) first
+- If you do not have mysql installed,  [install mysql](https://github.com/chyugo/gomemo/blob/master/mysql.md) first
 - Recommended to use **Navicat Premmium** for visual database management
 
 #### Login database
